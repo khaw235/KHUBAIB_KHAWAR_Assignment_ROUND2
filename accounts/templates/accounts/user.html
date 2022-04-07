@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <h1>Use Details</h1>
+
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}">
+            <input type="button" value="Logout"/>
+        </a>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+
+            <a href="{% url 'visualize' %}">
+                <input type="button" value="Visualize"/>
+            </a>
+        </form>
+        {% else %}
+        <h2>{{ message }}</h2>
+        {% endif %}
+    </body>
+</html>
